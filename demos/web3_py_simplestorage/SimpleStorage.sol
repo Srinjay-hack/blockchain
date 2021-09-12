@@ -1,11 +1,8 @@
-// SPDX-License-Identifier: MIT
-
-pragma solidity ^0.6.0;
+pragma solidity >=0.6.0 <0.9.0;
 
 contract SimpleStorage {
-    // this will get initialized to 0!
+
     uint256 favoriteNumber;
-    bool favoriteBool;
 
     struct People {
         uint256 favoriteNumber;
@@ -18,9 +15,9 @@ contract SimpleStorage {
     function store(uint256 _favoriteNumber) public {
         favoriteNumber = _favoriteNumber;
     }
-
-    function retrieve() public view returns (uint256) {
-        return favoriteNumber;
+    
+    function retrieve() public view returns (uint256){
+     ccx   return favoriteNumber;
     }
 
     function addPerson(string memory _name, uint256 _favoriteNumber) public {
