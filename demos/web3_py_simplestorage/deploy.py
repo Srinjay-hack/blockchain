@@ -1,4 +1,4 @@
-from  solc import compile_standard
+from solcx import compile_standard
 
 with open("./SimpleStorage.sol", "r") as file:
     simple_storage_file = file.read()
@@ -17,6 +17,6 @@ compiled_sol = compile_standard(
             }
         },
     },
-    solc_version="0.6.0",
+    #solc_version="0.8.0",
 )
 print(compiled_sol)

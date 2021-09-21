@@ -1,4 +1,4 @@
-pragma solidity >=0.6.0 <0.9.0;
+pragma solidity >=0.6.0;
 
 contract SimpleStorage {
 
@@ -17,7 +17,7 @@ contract SimpleStorage {
     }
     
     function retrieve() public view returns (uint256){
-     ccx   return favoriteNumber;
+        return favoriteNumber;
     }
 
     function addPerson(string memory _name, uint256 _favoriteNumber) public {
