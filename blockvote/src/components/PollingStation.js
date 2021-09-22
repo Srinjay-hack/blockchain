@@ -1,30 +1,98 @@
-import React,{usestate} from 'react';
+import React,{useState} from 'react';
 //import PropTypes from 'prop-types';
 import {Container,Row,Col,Button} from "react-bootstrap"
 
-
+import LoadingCircles from "../assets/KiVLT.svg";
 
 
 const PollingStation = props => {
 
-    const [candidate1URL,changeCandidate1Url]=usestate('https://www.google.com/url?sa=i&url=https%3A%2F%2Fgithub.com%2Fbitwarden%2Fdesktop%2Fissues%2F271&psig=AOvVaw0O6F-65nFYQ0YN9xCR8Zr_&ust=1632333789224000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNCvl7PTkPMCFQAAAAAdAAAAABAJ'
-    )
+    const [candidate1URL,changeCandidate1Url]=useState(LoadingCircles)
+    const [candidate2URL,changeCandidate2Url]=useState(LoadingCircles)
+    const [showresults,changeResultsDisplay]=useState(true);
     return (
         <Container>
             <Row>
-                <Col classname="justify-content-center d-flex">
+                <Col classname='justify-content-center d-flex'>
                 <Container>
-                    <Row style={{marginTop:"5vh",backgroundColor:"#c4c4c4"}}></Row>
+                    <Row style={{ marginTop:"5vh",backgroundColor:"#c4c4c4"}}>
                     <div  style={{
                         display:"flex",
                         justifyContent:"center",
                         padding:"3vw",
 
                     }}>
-                        <img style={{height:"35vh", width:"20vw"}}
+                        <img style={{
+                        height:"34vh",
+                        width:"20vw",
+                    }}
                         src={candidate1URL}></img>
                     </div>
+                    </Row>
+                    {showresults ? (<Row className="justify-content-center d-flex"
+                         style={{marginTop:"9vh"}}>
+                            <div style={{
+                        display: "flex",
+                        justifyContent:"center",
+                        fontSize:"3vw",
+                        height:"14vh",
+                        width:"10vw",
+                        padding:"9px",
+                        backgroundColor:"#c4c4c4",
+                    }}> 3
+                        </div></Row>):null}
+                    <Row style={{marginTop:"5vh"}}className="justify-content-center d-flex">
+                        <Button>Vote</Button>
+                    </Row>
+                </Container>
+                </Col>
+                <Col className="justify-content-center d-flex align-items-center">
+                    <div style={{
+                        display:"flex",
+                        justifyContent:"center",
+                        backgroundColor:"#c4c4c4",
+                        height:"26vh",
+                        fontSize:"2vw",
+                        width:"10vw",
+                        alignItems:"center",
+                        padding:"2vw",
+                        textAlign:"center",
+                    }}>
+                        Who will the election?
 
+                    </div>
+                </Col>
+                <Col classname='justify-content-center d-flex'>
+                <Container>
+                    <Row style={{ marginTop:"5vh",backgroundColor:"#c4c4c4"}}>
+                    <div  style={{
+                        display:"flex",
+                        justifyContent:"center",
+                        padding:"3vw",
+
+                    }}>
+                        <img style={{
+                        height:"34vh",
+                        width:"20vw",
+                    }}
+                        src={candidate2URL}></img>
+                    </div>
+                    </Row>
+                    {showresults ? (<Row className="justify-content-center d-flex"
+                         style={{marginTop:"9vh"}}>
+                            <div style={{
+                        display: "flex",
+                        justifyContent:"center",
+                        fontSize:"3vw",
+                        height:"14vh",
+                        width:"10vw",
+                        padding:"9px",
+                        backgroundColor:"#c4c4c4",
+                    }}> 3
+                        </div></Row>):null}
+                    <Row style={{marginTop:"5vh"}}className="justify-content-center d-flex">
+                        <Button>Vote</Button>
+                    </Row>
                 </Container>
                 </Col>
             </Row>
