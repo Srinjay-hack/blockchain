@@ -9,7 +9,7 @@ const PollingStation = props => {
 
     const [candidate1URL,changeCandidate1Url]=useState(LoadingCircles)
     const [candidate2URL,changeCandidate2Url]=useState(LoadingCircles)
-    const [showresults,changeResultsDisplay]=useState(true);
+    const [showresults,changeResultsDisplay]=useState(false);
     return (
         <Container>
             <Row>
