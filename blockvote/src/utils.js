@@ -15,8 +15,8 @@ export async function initContract() {
   window.accountId = window.walletConnection.getAccountId()
 
   window.contract = await new Contract(window.walletConnection.account(), nearConfig.contractName, {
-    viewMethods: ['getGreeting'],
-    changeMethods: ['addUrl'],
+    viewMethods: ['getGreeting','didParticipate','getAllprompt','getVotes','getUrl','getCandidatePair'],
+    changeMethods: ['addUrl','addToPromptArray','addCandidatePair','addVote','recordUser'],
   })
 }
 

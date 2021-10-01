@@ -17,10 +17,55 @@ export function getUrl(name:string):string{
     return CandidateURL.getSome(name);
   }
   else{
-    logging.log(`cant find user`)
-    return " "
+    logging.log(`cant find user`);
+    return " ";
   }
 }
+
+
+export function didParticipate(prompt:string,user:string):bool{
+  if(userParticipation.contains(prompt)){
+    let getArray=userParticipation.getSome(prompt);
+    return getArray.includes(user);
+  }
+  else{
+    logging.log('prompt not found');
+    return false;
+  }
+}
+
+
+
+export function getAllprompt():string[]{
+  if(PromptArray.contains('AllArrays')){
+    return PromptArray.getSome('All Arrays');
+  }
+  else{
+    logging.log('no prompts found');
+    return [];
+  }
+}
+
+export function getVotes(prompt:string):i32[]{
+  if(VoteArray.contains(prompt)){
+    return VoteArray.getSome(prompt);
+  }
+  else{
+    logging.log('prompt not found for this vote');
+    return [0,0];
+  }
+}
+
+export function getCandidatePair(prompt:string):string[]{
+  if(CandidatePair.contains(prompt)){
+    return CandidatePair.getSome(prompt);
+  }
+  else{
+    logging.log('prompt not found');
+    return [];
+  }
+}
+
 
 //Change Methods
 //Change state in BLockchain
@@ -29,6 +74,18 @@ export function getUrl(name:string):string{
 export function addUrl(name: string,url: string):void{
   CandidateURL.set(name,url);
   logging.log('added url for '+ name);
+}
+
+
+export function addToPromptArray(prompt:string):void{
+  logging.log('Added to prompt array')
+  if(PromptArray.contains("AllArrays")){
+    let tempArray=PromptArray.getSome("AllArrays")
+    tempArray.push(prompt); 
+  }
+  else{
+    PromptArray.set("AllArrays",[prompt])
+  }
 }
 
 
@@ -41,6 +98,22 @@ export function addVote(prompt:string,index:i32):void{
     let tempVal=tempArray[index];
     let newVal=tempVal+1;
     tempArray[index]=newVal;
+    VoteArray.set(prompt,tempArray);
   }
+  else{
+    let newArray=[0,0];
+    newArray[index]=1;
+    VoteArray.set(prompt,newArray);
+  }
+}
 
+export function recordUser(prompt:string,user:string):void{
+  if(userParticipation.contains(prompt)){
+    let tempArray= userParticipation.getSome(prompt);
+    tempArray.push(user);
+    userParticipation.set(prompt,tempArray);
+  }
+  else{
+    userParticipation.set(prompt,[user]);
+  }
 }

@@ -13,7 +13,7 @@ const home = (props) => {
 
     return (
         <Container>
-            <Table style={{margin: "5vh "}} stripped bordered hover>
+            <Table style={{margin: "5vh"}} stripped bordered hover>
                 <thead>
                     <tr>
                         <th>$</th>
@@ -28,7 +28,7 @@ const home = (props) => {
                                 <td>{index+1}</td>
                                 <td>{el}</td>
                             <td>{""}
-                                <Button>Let's  Poll </Button>
+                                <Button onClick={()=>props.changeCandidates(el)}>Let's  Poll </Button>
                             </td>    
                         </tr>);
                     })}
